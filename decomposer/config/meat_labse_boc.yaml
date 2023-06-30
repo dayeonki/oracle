@@ -1,0 +1,11 @@
+train_path: ../data/labse_train_jako_1m.pt
+valid_path: ../data/labse_valid_jako_1m.pt
+model_name_or_path: sentence-transformers/LaBSE
+save_pooler_path: ../models/meat_labse_boc.pt
+logging_path: ../logs/meat_labse_boc.log
+train_type: boc
+learning_rate: 1e-5
+n_languages: 2
+batch_size: 512
+seed: 42
+weights: [[1,1,1,1,1]]

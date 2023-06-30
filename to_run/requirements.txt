@@ -1,0 +1,9 @@
+importlib-metadata
+importlib-resources
+torch
+transformers
+bokeh
+faiss-gpu
+typing_extensions
+tqdm
+laserembeddings
