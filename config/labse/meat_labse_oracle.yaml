@@ -1,0 +1,11 @@
+train_path: data/embed/labse-train.pt
+valid_path: data/embed/labse-valid.pt
+save_pooler_path: pooler/labse/meat-labse-oracle.pt
+logging_path: log/meat-labse-oracle.log
+train_type: oracle_new
+learning_rate: 1e-5
+n_languages: 13
+batch_size: 512
+seed: 42
+weights: [[1,1]]
+model_name_or_path: sentence-transformers/LaBSE

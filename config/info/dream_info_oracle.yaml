@@ -1,0 +1,11 @@
+train_path: data/embed/infoxlm-train.pt
+valid_path: data/embed/infoxlm-valid.pt
+save_pooler_path: pooler/infoxlm/dream-infoxlm-oracle.pt
+logging_path: log/dream-infoxlm-oracle.log
+train_type: oracle_new
+learning_rate: 1e-5
+n_languages: 13
+batch_size: 512
+seed: 42
+weights: [[1,1]]
+model_name_or_path: microsoft/infoxlm-large
