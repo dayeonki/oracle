@@ -3,7 +3,7 @@
 This repository contains the code and dataset for our ACL 2024 RepL4NLP workshop paper **Mitigating Semantic Leakage in Cross-lingual Embeddings via Orthogonality Constraint**.
 
 <div align="center">
-[🤖 <b><a href=https://github.com/dayeonki/oracle>Code</a></b> / 📄 <b><a href=>Paper</a></b>]
+[🤖 <b><a href=https://github.com/dayeonki/oracle/code>Code</a></b> / 🤗 <b><a href=https://huggingface.co/datasets/zoeyki/oracle_dataset>Dataset</a></b> / 📄 <b><a href=>Paper</a></b>]
 </div>
 
 
