@@ -35,7 +35,7 @@ Install all requirements in `requirements.txt`.
 ```bash
 pip install -r requirements.txt
 ```
-### Data preparation
+### [Step 1] Data preparation
 Place the parallel sentences in `data/` and transform each file into text file with each sentence in each line. Below is an example for English-French language pair.
 
 **en-fr.en**
@@ -54,7 +54,7 @@ Elle apprend à cuisiner des plats traditionnels français.
 ...
 ```
 
-### Create embeddings
+### [Step 2] Create embeddings
 We use 3 different pre-trained multilingual encoders: <a href=https://github.com/facebookresearch/LASER>LASER</a>, <a href=https://huggingface.co/microsoft/infoxlm-base>InfoXLM</a> and <a href=https://huggingface.co/sentence-transformers/LaBSE>LaBSE</a>. To create embeddings for the bitext dataset in `data/`, run `script/embed.py` as below:
 
 ```
@@ -83,7 +83,7 @@ Arguments for the create embeddings script are as follows,
 - `--batch_size`: Batch size of the model (default: 512)
 - `--seed_num`: Seed number (default: 42)
 
-### Train
+### [Step 3] Train
 Using the embedding created from previous step, we train the decomposer with ORACLE objective. To train, you have to choose each variation from below options:
 - Decomposer type : {DREAM, MEAT}
 - Encoder type : {LASER, InfoXLM, LaBSE}
