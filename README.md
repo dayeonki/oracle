@@ -117,7 +117,7 @@ model_name_or_path: $MODEL_NAME
 - `train_path`: Path to the saved train split of embeddings
 - `valid_path`: Path to the saved validation split of embeddings
 - `model_name_or_path`: Path or name of the pre-trained multilingual encoder
-- `save_pooler_path`: Path to save the pooler after training는 학습이 끝난 뒤에 가장 좋은 성능을 보이는 pooler를 저장하는 경로입니다.
+- `save_pooler_path`: Path to save the pooler after training
 - `logging_path`: Path to save the log file (Log file saves the loss values for each training epoch)
 - `train_type`: {vanilla, oracle}
 - `n_languages`: Number of languages (default: 13)
