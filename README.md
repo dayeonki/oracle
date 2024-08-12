@@ -150,4 +150,26 @@ python -u visualize.py \
 
 ## Citation
 ```
+@inproceedings{ki-etal-2024-mitigating,
+    title = "Mitigating Semantic Leakage in Cross-lingual Embeddings via Orthogonality Constraint",
+    author = "Ki, Dayeon  and
+      Park, Cheonbok  and
+      Kim, Hyunjoong",
+    editor = "Zhao, Chen  and
+      Mosbach, Marius  and
+      Atanasova, Pepa  and
+      Goldfarb-Tarrent, Seraphina  and
+      Hase, Peter  and
+      Hosseini, Arian  and
+      Elbayad, Maha  and
+      Pezzelle, Sandro  and
+      Mozes, Maximilian",
+    booktitle = "Proceedings of the 9th Workshop on Representation Learning for NLP (RepL4NLP-2024)",
+    month = aug,
+    year = "2024",
+    address = "Bangkok, Thailand",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.repl4nlp-1.19",
+    pages = "256--273"
+}
 ```
