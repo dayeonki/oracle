@@ -1,5 +1,7 @@
 # Mitigating Semantic Leakage in Cross-lingual Embeddings via Orthogonality Constraint
 
+Authors: Dayeon Ki, Cheonbok Park, Hyunjoong Kim
+
 This repository contains the code and dataset for our ACL 2024 RepL4NLP workshop paper **Mitigating Semantic Leakage in Cross-lingual Embeddings via Orthogonality Constraint**.
 
 <div align="center">
