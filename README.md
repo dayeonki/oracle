@@ -1,44 +1,84 @@
-# Mitigating Semantic Leakage in Cross-lingual Embeddings via Orthogonality Constraint
-
-Authors: Dayeon Ki, Cheonbok Park, Hyunjoong Kim
-
-This repository contains the code and dataset for our ACL 2024 RepL4NLP workshop paper **Mitigating Semantic Leakage in Cross-lingual Embeddings via Orthogonality Constraint**.
-
 <div align="center">
-<img src="https://github.com/user-attachments/assets/b3415a65-ccac-4468-a291-07602cb95509" style="width: 15px;" alt="code"> <b><a href=https://github.com/dayeonki/oracle>Code</a></b> | <img src="https://github.com/user-attachments/assets/2bd9af9b-2182-4aef-83cd-6e9ca6189a39" style="width: 15px;" alt="data">
- <b><a href=https://huggingface.co/datasets/zoeyki/oracle_dataset>Dataset</a></b> | <img src="https://github.com/user-attachments/assets/fc2ca3c2-3e78-4ca4-a208-448c0a6c7068" style="width: 15px;" alt="paper"> <b><a href=https://aclanthology.org/2024.repl4nlp-1.19>Paper</a></b>
+
+ # Mitigating Semantic Leakage in Cross-lingual Embeddings via Orthogonality Constraint
+ 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/0852047a-00d1-49e2-b556-e02db7c9c4f6" width="600">
+</p>
+
+<a href=https://dayeonki.github.io/>Dayeon Ki</a><sup>1</sup>, <a href=https://github.com/lovit>Hyunjoong Kim</a><sup>2</sup>, <a href=https://cbokpark.github.io/>Cheonbok Park<a><sup>2</sup> <br>
+<sup>1</sup>University of Maryland, <sup>2</sup>NAVER
+<br>
+
+This repository contains the code and dataset for our ACL 2024 Rep4NLP Workshop paper <br> **Mitigating Semantic Leakage in Cross-lingual Embeddings via Orthogonality Constraint**.
+
+<p>
+  <a href="https://aclanthology.org/2024.repl4nlp-1.19/" target="_blank" style="text-decoration:none">
+    <img src="https://img.shields.io/badge/arXiv-Paper-b31b1b?style=flat&logo=arxiv" alt="arXiv">
+  </a>
+ <br>
+  <a href="https://huggingface.co/datasets/zoeyki/oracle_dataset" target="_blank">
+    <img src="https://img.shields.io/badge/🤗-Dataset-yellow?style=flat" alt="HuggingFace">
+  </a>
+</p>
+
 </div>
 
+---
 
-## Abstract
-Accurately aligning contextual representations in cross-lingual sentence embeddings is key for effective parallel data mining. A common strategy for achieving this alignment involves disentangling semantics and language in sentence embeddings derived from multilingual pre-trained models. However, we discover that current disentangled representation learning methods suffer from **_semantic leakage_** — a term we introduce to describe when a substantial amount of language-specific information is unintentionally leaked into semantic representations. This hinders the effective disentanglement of semantic and language representations, making it difficult to retrieve embeddings that distinctively represent the meaning of the sentence.
+## 👾 TL;DR
+We discover that current disentangled representation learning methods suffer from **semantic leakage** — a term we introduce to describe when a substantial amount of language-specific information is unintentionally leaked into semantic representations.
+We propose a novel training objective, ORthogonAlity Constraint LEarning (**ORACLE**), tailored to enforce orthogonality between semantic and language embeddings.
 
-To address this challenge, we propose a novel training objective, ORthogonAlity Constraint LEarning (**ORACLE**), tailored to enforce orthogonality between semantic and language embeddings. ORACLE builds upon two components: intra-class clustering and inter-class separation. Through experiments on cross-lingual retrieval and semantic textual similarity tasks, we demonstrate that training with the ORACLE objective effectively reduces semantic leakage and enhances semantic alignment within the embedding space.
+
+## 📰 News
+- **`2024-07-16`** Our paper is accepted to **ACL 2024 Rep4NLP Workshop**!
+
+
+## ✏️ Content
+- [🗺️ Overview](#overview)
+- [🚀 Quick Start](#quick_start)
+  - [Data Preparation](#data-preparation)
+  - [Create Embeddings](#create-embeddings)
+  - [Train Embedding Model](#train-embedding-model)
+  - [Retrieval Inference](#retrieval-inference)
+  - [Visualization](#visualization)
+- [🤲 Citation](#citation)
+- [📧 Contact](#contact)
+
+---
+
+
+<a id="overview"></a>
+## 🗺️ Overview
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0852047a-00d1-49e2-b556-e02db7c9c4f6" width="500">
+  <img src="https://github.com/user-attachments/assets/d2a0978d-7820-4003-84be-8025e804d728" width="800">
 </p>
 
-## Quick Links
-- [Overview](#overview)
-- [Train with ORACLE](#train-with-oracle)
-- [Retrieval Inference](#retrieval-inference)
-- [Visualization](#visualization)
-
-
-## Overview
 ORACLE consists of two key components: (1) **intra-class clustering** and (2) **inter-class separation**. Intra-class clustering aligns related components more closely, while inter-class separation enforces orthogonality between unrelated components. Our method is designed to be simple and effective, capable of being implemented atop any disentanglement methods.
 
-We explore a range of pre-trained multilingual encoders (LASER, InfoXLM, LaBSE) to generate initial sentence embeddings. Subsequently, we train each semantic and language multi-layer perceptrons (MLPs) with ORACLE to disentangle the sentence embeddings into semantics and language-specific information. Experimental results on both cross-lingual sentence retrieval tasks and the Semantic Textual Similarity (STS) task demonstrate higher performance on semantic embeddings and lower performance on language embeddings with ORACLE. The following figure is an illustration of our work.
+We explore a range of pre-trained multilingual encoders (LASER, InfoXLM, LaBSE) to generate initial sentence embeddings. Subsequently, we train each semantic and language multi-layer perceptrons (MLPs) with ORACLE to disentangle the sentence embeddings into semantics and language-specific information. Experimental results on both cross-lingual sentence retrieval tasks and the Semantic Textual Similarity (STS) task demonstrate higher performance on semantic embeddings and lower performance on language embeddings with ORACLE.
+
+
+### Results
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/d2a0978d-7820-4003-84be-8025e804d728" width="600">
+<img width="970" height="392" alt="Screenshot 2026-04-03 at 2 34 49 PM" src="https://github.com/user-attachments/assets/c44766f9-c5ba-41c2-8e40-cb2a869b529f" />
 </p>
 
-## Train with ORACLE
-Install all requirements in `requirements.txt`.
+
+
+<a id="quick_start"></a>
+## 🚀 Quick Start
+
+### Data Preparation
+
+First, install all requirements in `requirements.txt`.
 ```bash
 pip install -r requirements.txt
 ```
-### [Step 1] Data preparation
+
 Place the parallel sentences in `data/` and transform each file into text file with each sentence in each line. Below is an example for English-French language pair.
 
 **en-fr.en**
@@ -57,7 +97,8 @@ Elle apprend à cuisiner des plats traditionnels français.
 ...
 ```
 
-### [Step 2] Create embeddings
+### Create Embeddings
+
 We use 3 different pre-trained multilingual encoders: <a href=https://github.com/facebookresearch/LASER>LASER</a>, <a href=https://huggingface.co/microsoft/infoxlm-base>InfoXLM</a> and <a href=https://huggingface.co/sentence-transformers/LaBSE>LaBSE</a>. To create embeddings for the bitext dataset in `data/`, run `script/embed.py` as below:
 
 ```
@@ -86,7 +127,9 @@ Arguments for the create embeddings script are as follows,
 - `--batch_size`: Batch size of the model (default: 512)
 - `--seed_num`: Seed number (default: 42)
 
-### [Step 3] Train
+
+### Train Embedding Model
+
 Using the embedding created from previous step, we train the decomposer with ORACLE objective. To train, you have to choose each variation from below options:
 - Decomposer type : {DREAM, MEAT}
 - Encoder type : {LASER, InfoXLM, LaBSE}
@@ -127,7 +170,7 @@ model_name_or_path: $MODEL_NAME
 - `weights`: Weight values for each losses
 
 
-## Retrieval Inference
+### Retrieval Inference
 We provide inference codes for following retrieval tasks in `code/inference/`:
 - **BUCC** : Crosslingual retrieval task, run `bucc.py` for InfoXLM and LaBSE and run `bucc_laser.py` for LASER
 - **Tatoeba**: Crosslingual retrieval task
@@ -136,7 +179,7 @@ We provide inference codes for following retrieval tasks in `code/inference/`:
 - **STS** : Semantic textual similarity task, run `sts.py` for InfoXLM and LaBSE and run `sts_laser.py` for LASER
 
 
-## Visualization
+### Visualization
 To visualize the embedding space of the trained decomposers using `datavis` library, run `code/visualize.py`. This code will save a html bokeh file in the `output_figure` directory.
     
 ```
@@ -151,7 +194,11 @@ python -u visualize.py \
    --output_figure $PATH_TO_OUTPUT_FIGURE
 ```
 
-## Citation
+---
+
+<a id="citation"></a>
+## 🤲 Citation
+If you find our work useful in your research, please consider citing our work:
 ```
 @inproceedings{ki-etal-2024-mitigating,
     title = "Mitigating Semantic Leakage in Cross-lingual Embeddings via Orthogonality Constraint",
@@ -176,3 +223,7 @@ python -u visualize.py \
     pages = "256--273"
 }
 ```
+
+<a id="contact"></a>
+## 📧 Contact
+For questions, issues, or collaborations, please reach out to [dayeonki@umd.edu](mailto:dayeonki@umd.edu).
